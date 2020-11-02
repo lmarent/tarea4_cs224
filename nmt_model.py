@@ -285,7 +285,7 @@ class NMT(nn.Module):
 
         enc_hiddens_proj = self.att_projection(enc_hiddens)
         Y = self.model_embeddings.target(target_padded)
-        print(Y)
+        #print(Y)
         Y_divided = torch.split(Y, split_size_or_sections=1, dim=0)
         for Y_t in Y_divided:
             Y_t = torch.squeeze(Y_t,dim=0)
@@ -406,7 +406,7 @@ class NMT(nn.Module):
         a_t = torch.squeeze(a_t, dim=1)
         #print('a_t', a_t.size())
         U_t = torch.cat((a_t, dec_hidden), dim=1)
-        print('U_t', U_t.size())
+        #print('U_t', U_t.size())
         V_t = self.combined_output_projection(U_t)
         O_t = self.dropout(torch.tanh(V_t))
 
